@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Summarizer</title>
+    <link
+      rel="stylesheet"
+      href='{{ url_for("static", filename="styles.css") }}'
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload a document</h1>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf, .docx" required />
+        <button type="submit">Upload</button>
+      </form>
+      {% if summary %}
+      <div class="results">
+        <div class="summary-section">
+          <h2>Summary:</h2>
+          <p>{{ summary }}</p>
+        </div>
+        <div class="theme-section">
+          <h2>Main Theme:</h2>
+          <p>{{ main_theme }}</p>
+        </div>
+        <div class="subject-section">
+          <h2>Main Subject:</h2>
+          <p>{{ main_subject }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+  <footer>
+    <p>
+      ISSA IBRAHIM Moubarak &copy; 2024 Text Summarization Project. All rights
+      reserved.
+    </p>
+  </footer>
+</html>
