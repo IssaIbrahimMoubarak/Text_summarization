@@ -1,50 +1,51 @@
+
 # Flask Application for Automatic Text Summarization
 
-Cette application Flask permet de télécharger des fichiers PDF, DOCX ou TXT et de générer automatiquement un résumé du contenu de ces fichiers en utilisant des modèles de résumé basés sur la bibliothèque `transformers` de Hugging Face.
+This Flask application allows users to upload PDF, DOCX, or TXT files and automatically generates a summary of the content using summarization models based on Hugging Face's `transformers` library.
 
-## Fonctionnalités
+## Features
 
-- **Téléchargement de fichiers** : Les utilisateurs peuvent télécharger des fichiers PDF, DOCX ou TXT via l'interface web.
-- **Extraction de texte** : Le texte est extrait des fichiers PDF et DOCX à l'aide de `pdfminer` et `python-docx`.
-- **Résumé automatique** : Le texte extrait est résumé à l'aide de deux modèles de summarization : BART (`facebook/bart-large-cnn`) et mT5 (`csebuetnlp/mT5_multilingual_XLSum`).
+- **File Upload**: Users can upload PDF, DOCX, or TXT files through the web interface.
+- **Text Extraction**: Text is extracted from PDF and DOCX files using `pdfminer` and `python-docx`.
+- **Automatic Summarization**: The extracted text is summarized using two summarization models: BART (`facebook/bart-large-cnn`) and mT5 (`csebuetnlp/mT5_multilingual_XLSum`).
 
-## Dépendances
+## Dependencies
 
-- `Flask` : Cadre de travail web léger pour Python.
-- `pdfminer` : Outil pour extraire du texte des fichiers PDF.
-- `python-docx` : Bibliothèque pour travailler avec des documents Word.
-- `transformers` : Bibliothèque de Hugging Face pour les modèles de NLP (Natural Language Processing).
+- `Flask`: A lightweight web framework for Python.
+- `pdfminer`: A tool for extracting text from PDF files.
+- `python-docx`: A library for working with Word documents.
+- `transformers`: Hugging Face's library for NLP (Natural Language Processing) models.
 
-## Structure du Code
+## Code Structure
 
-- **Initialisation de l'application Flask** : L'application Flask est initialisée avec un dossier de téléchargement configuré.
-- **Chargement des modèles** : Deux modèles de summarization (BART et mT5) sont initialisés pour générer des résumés.
-- **Fonctions d'extraction de texte** :
-  - `read_pdf(file_path)` : Extrait le texte d'un fichier PDF.
-  - `read_word(file_path)` : Extrait le texte d'un fichier DOCX.
-- **Fonction de résumé** :
-  - `summarize_file(file_path)` : Extrait le texte du fichier téléchargé et génère des résumés en utilisant les modèles BART et mT5.
-- **Routes Flask** :
-  - `'/'` : Affiche la page d'accueil avec un formulaire de téléchargement de fichier.
-  - `'/upload'` : Gère le téléchargement de fichiers et renvoie les résumés générés.
+- **Flask Application Initialization**: The Flask application is initialized with a configured upload folder.
+- **Model Loading**: Two summarization models (BART and mT5) are initialized to generate summaries.
+- **Text Extraction Functions**:
+  - `read_pdf(file_path)`: Extracts text from a PDF file.
+  - `read_word(file_path)`: Extracts text from a DOCX file.
+- **Summarization Function**:
+  - `summarize_file(file_path)`: Extracts text from the uploaded file and generates summaries using the BART and mT5 models.
+- **Flask Routes**:
+  - `'/'`: Displays the homepage with a file upload form.
+  - `'/upload'`: Handles file uploads and returns the generated summaries.
 
-## Utilisation
+## Usage
 
-1. Clonez le dépôt et installez les dépendances :
+1. Clone the repository and install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-2. Créez le dossier de téléchargement si nécessaire :
+2. Create the upload folder if necessary:
    ```bash
    mkdir uploads
    ```
-3. Lancez l'application Flask :
+3. Run the Flask application:
    ```bash
    python app.py
    ```
-4. Accédez à l'application via un navigateur web à l'adresse `http://127.0.0.1:5000/` et téléchargez un fichier pour obtenir son résumé.
+4. Access the application via a web browser at `http://127.0.0.1:5000/` and upload a file to get its summary.
 
-## Remarques
+## Notes
 
-- Cette application est conçue pour fonctionner avec des fichiers de format PDF, DOCX et TXT.
-- Assurez-vous que les modèles BART et mT5 sont téléchargés correctement lors de l'initialisation de la pipeline.
+- This application is designed to work with files in PDF, DOCX, and TXT formats.
+- Ensure that the BART and mT5 models are downloaded correctly during the pipeline initialization.
